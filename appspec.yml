@@ -1,0 +1,13 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:590184025278:task-definition/deploymenttask:1"  # Replace with the ARN of your ECS task definition
+        LoadBalancerInfo:
+          ProductionTrafficRoute:
+            Type: ALB
+            LogicalID: deploy-tg1  # Replace with your production target group name
+          TestTrafficRoute:
+            Type: ALB
+            LogicalID: deploy-tg2  # Replace with your test target group name
